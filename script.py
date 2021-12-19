@@ -30,7 +30,15 @@ df["testelapse"] = pd.cut(df["testelapse"],
        bins=[0, 50, 100, 150, 200, np.Inf],
        labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
 
-# TODO: surveyelapse (See bins)
+# Process surveyelapse column (convert to numeric, replace missing with mean, discretize)
+df["surveyelapse"] = pd.to_numeric(df["surveyelapse"])
+
+df["surveyelapse"] = df["surveyelapse"].fillna(df["surveyelapse"].mean())
+
+df["surveyelapse"] = pd.cut(df["surveyelapse"],
+       bins=[0, 50, 100, 150, 200, np.Inf],
+       labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
+
 
 # TODO: Race booleans to categoric
 
