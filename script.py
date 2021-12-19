@@ -3,11 +3,13 @@ import numpy as np
 
 data = pd.read_csv("data.csv", sep=',', error_bad_lines=False, index_col=False, dtype='unicode') 
 
+# Remove malformed lines (#13507)
+data = data.drop(13505)
+
 df = pd.DataFrame(data)
 
 # Data preparation
 
-# Remove malformed lines (#13507)
 
 # Convert time lapses to numeric
 df["introelapse"] = pd.to_numeric(df["introelapse"])
