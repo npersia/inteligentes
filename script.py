@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np
+import matplotlib.pyplot as plt
 
 data = pd.read_csv("data.csv", sep=',', error_bad_lines=False, index_col=False, dtype='unicode') 
 
@@ -29,5 +30,22 @@ df["testelapse"] = pd.cut(df["testelapse"],
        bins=[0, 50, 100, 150, 200, np.Inf],
        labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
 
+# TODO: surveyelapse (See bins)
+
+# TODO: Race booleans to categoric
+
+# TODO: Delete major or boolean (hasMajorData)
+
+# TODO: Sanitize (<= 100), discretize age
+
+# TODO: Discretize screenw, screenh. Phone, PC, monitor. 
+
+# TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
+
+# TODO: Remove ASD
+
+ax = df["introelapse"].hist()
+fig = ax.get_figure()
+fig.savefig('figure.pdf')
 
 df.to_csv('processed_data.csv', index=False)
