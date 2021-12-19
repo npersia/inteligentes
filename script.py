@@ -12,9 +12,17 @@ df = pd.DataFrame(data)
 # Convert time lapses to numeric
 df["introelapse"] = pd.to_numeric(df["introelapse"])
 
+df["introelapse"] = df["introelapse"].fillna(df["introelapse"].mean())
+
+
+
 df["introelapse"] = pd.cut(df["introelapse"],
        bins=[0, 25, 50, 75, 100,99999999999],
        labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
+
+
+
+
 
 
 
