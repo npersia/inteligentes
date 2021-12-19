@@ -15,4 +15,4 @@ df["introelapse"] = pd.cut(df["introelapse"],
 
 # print(df["introelapse"])
 
-df.to_csv('processed_data.csv')
+df.to_csv('processed_data.csv', index=False)
