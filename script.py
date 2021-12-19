@@ -13,8 +13,8 @@ df = pd.DataFrame(data)
 df["introelapse"] = pd.to_numeric(df["introelapse"])
 
 df["introelapse"] = pd.cut(df["introelapse"],
-       bins=[0, 25, 50, 75, 100, 125], 
-       labels=["Muy rápido", "Rápido", "Promedio", "Lento", "Muy lento"])
+       bins=[0, 25, 50, 75, 100,99999999999],
+       labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
 
 
 
