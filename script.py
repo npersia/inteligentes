@@ -97,7 +97,10 @@ df.drop('screenw', axis=1, inplace=True)
 df.drop('screenh', axis=1, inplace=True)
 
 # TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
-
+df["nerdy"] = pd.to_numeric(df["nerdy"])
+df["nerdy"] = pd.cut(df["nerdy"],
+       bins=[0, 2, 5, 6, np.Inf],
+       labels=["LOW", "NORMAL", "NERD", "FREAK"])
 
 # TODO: Remove ASD
 df.drop('ASD', axis=1, inplace=True)
