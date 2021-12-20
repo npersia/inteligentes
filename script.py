@@ -85,6 +85,12 @@ df["age"] = pd.cut(df["age"],
 # Height: 640 (mobile), 760 (tablet), 800 (pc), > monitor
 # Width: 360 (mobile), 1020 (tablet), 1280 (pc), > monitor
 
+df["screenw"] = pd.to_numeric(df["screenw"])
+
+df["device"] = pd.cut(df["screenw"],
+       bins=[0, 360, 760, 1280, np.Inf],
+       labels=["Mobile", "Tablet", "PC", "Monitor"])
+
 # TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
 
 
