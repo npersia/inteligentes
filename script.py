@@ -65,12 +65,16 @@ df["age"][df["age"] > 99] = None
 df["age"] = df["age"].fillna(df["age"].mean())
 
 df["age"] = pd.cut(df["age"],
-       bins=[0, 9, 18, 35, 60, np.Inf],
+       bins=[0, 12, 18, 35, 60, np.Inf],
        labels=["Young", "Teenager", "Adult", "Seniors", "Elderly"])
 
 # TODO: Discretize screenw, screenh. Phone, PC, monitor. 
 
+# Height: 640 (mobile), 760 (tablet), 800 (pc), > monitor
+# Width: 360 (mobile), 1020 (tablet), 1280 (pc), > monitor
+
 # TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
+
 
 # TODO: Remove ASD
 df.drop('ASD', axis=1, inplace=True)
