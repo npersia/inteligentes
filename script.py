@@ -57,6 +57,18 @@ df['race'] = \
                      )
                      )
 
+
+# TODO: Drop race columns
+df.drop('race_other', axis=1, inplace=True)
+df.drop('race_nativeau', axis=1, inplace=True)
+df.drop('race_nativeam', axis=1, inplace=True)
+df.drop('race_hispanic', axis=1, inplace=True)
+df.drop('race_white', axis=1, inplace=True)
+df.drop('race_black', axis=1, inplace=True)
+df.drop('race_asian', axis=1, inplace=True)
+df.drop('race_arab', axis=1, inplace=True)
+
+
 # TODO: Delete major or boolean (hasMajorData)
 
 # TODO: Sanitize (<= 100), discretize age
@@ -74,6 +86,10 @@ df["age"] = pd.cut(df["age"],
 
 # TODO: Remove ASD
 df.drop('ASD', axis=1, inplace=True)
+
+
+
+
 
 ax = df["introelapse"].hist()
 fig = ax.get_figure()
