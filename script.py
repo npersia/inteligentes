@@ -70,6 +70,7 @@ df.drop('race_arab', axis=1, inplace=True)
 
 
 # TODO: Delete major or boolean (hasMajorData)
+df["major_empty"]= pd.notnull(df["major"]) 
 
 # TODO: Sanitize (<= 100), discretize age
 df["age"] = pd.to_numeric(df["age"])
