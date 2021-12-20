@@ -92,15 +92,15 @@ df["device"] = pd.cut(df["screenw"],
        bins=[0, 360, 760, 1280, np.Inf],
        labels=["Mobile", "Tablet", "PC", "Monitor"])
 
+# TODO: Remove screenw, screenh
+df.drop('screenw', axis=1, inplace=True)
+df.drop('screenh', axis=1, inplace=True)
+
 # TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
 
 
 # TODO: Remove ASD
 df.drop('ASD', axis=1, inplace=True)
-
-
-
-
 
 ax = df["introelapse"].hist()
 fig = ax.get_figure()
