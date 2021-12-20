@@ -39,7 +39,6 @@ df["surveyelapse"] = pd.cut(df["surveyelapse"],
        bins=[0, 50, 100, 150, 200, np.Inf],
        labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
 
-
 # TODO: Race booleans to categoric
 
 # TODO: Delete major or boolean (hasMajorData)
@@ -51,6 +50,7 @@ df["surveyelapse"] = pd.cut(df["surveyelapse"],
 # TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
 
 # TODO: Remove ASD
+df.drop('ASD', axis=1, inplace=True)
 
 ax = df["introelapse"].hist()
 fig = ax.get_figure()
