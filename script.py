@@ -40,6 +40,22 @@ df["surveyelapse"] = pd.cut(df["surveyelapse"],
        labels=["Very Fast", "Fast", "Average", "Slow", "Very Slow"])
 
 # TODO: Race booleans to categoric
+df['race'] = \
+       np.where(df['race_other'] == '1', 'race_other',
+       np.where(df['race_nativeau'] == '1', 'race_nativeau',
+       np.where(df['race_nativeam'] == '1', 'race_nativeam',
+       np.where(df['race_hispanic'] == '1', 'race_hispanic',
+       np.where(df['race_white'] == '1', 'race_white',
+       np.where(df['race_black'] == '1', 'race_black',
+       np.where(df['race_asian'] == '1', 'race_asian',
+       np.where(df['race_arab'] == '1', 'race_arab', '0')
+                     )
+                     )
+                     )
+                     )
+                     )
+                     )
+                     )
 
 # TODO: Delete major or boolean (hasMajorData)
 
