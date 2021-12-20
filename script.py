@@ -44,6 +44,13 @@ df["surveyelapse"] = pd.cut(df["surveyelapse"],
 # TODO: Delete major or boolean (hasMajorData)
 
 # TODO: Sanitize (<= 100), discretize age
+df["age"] = pd.to_numeric(df["age"])
+df["age"][df["age"] > 99] = None
+df["age"] = df["age"].fillna(df["age"].mean())
+
+df["agecat"] = pd.cut(df["age"],
+       bins=[0, 9, 18, 35, 60, np.Inf],
+       labels=["Young", "Teenager", "Adult", "Seniors", "Elderly"])
 
 # TODO: Discretize screenw, screenh. Phone, PC, monitor. 
 
