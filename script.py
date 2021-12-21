@@ -11,6 +11,24 @@ df = pd.DataFrame(data)
 
 # Data preparation
 
+for i in range(1, 27):
+       qkey = "Q" + str(i)
+       df[qkey] = pd.to_numeric(df[qkey])
+       df[qkey] = pd.cut(df[qkey],
+       bins=[0, 3, 4, np.Inf],
+       labels=[1, 2, 3])
+
+
+
+for i in range(1, 11):
+       qkey = "TIPI" + str(i)
+       df[qkey] = pd.to_numeric(df[qkey])
+       df[qkey] = pd.cut(df[qkey],
+       bins=[0, 4, 5, np.Inf],
+       labels=[1, 2, 3])
+
+df["introelapse"] = pd.to_numeric(df["introelapse"])
+
 # Process introelapse column (convert to numeric, replace missing with mean, discretize)
 df["introelapse"] = pd.to_numeric(df["introelapse"])
 
@@ -99,11 +117,18 @@ df.drop('screenh', axis=1, inplace=True)
 # TODO: Discretize class nerdiness (LOW, NORMAL, NERD, FREAK)
 df["nerdy"] = pd.to_numeric(df["nerdy"])
 df["nerdy"] = pd.cut(df["nerdy"],
-       bins=[0, 2, 5, 6, np.Inf],
-       labels=["LOW", "NORMAL", "NERD", "FREAK"])
+       bins=[0, 5, 6, 7],
+       labels=["LOW", "NORMAL", "NERD"])
 
 # TODO: Remove ASD
 df.drop('ASD', axis=1, inplace=True)
+
+# TODO: Review
+df.drop('country', axis=1, inplace=True)
+df.drop('familysize', axis=1, inplace=True)
+df.drop('religion', axis=1, inplace=True)
+df.drop('race', axis=1, inplace=True)
+
 
 ax = df["introelapse"].hist()
 fig = ax.get_figure()
