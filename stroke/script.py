@@ -13,8 +13,8 @@ df.drop('id', axis=1, inplace=True)
 df["age"] = pd.to_numeric(df["age"])
 
 df["age"] = pd.cut(df["age"],
-       bins=[0, 12, 18, 35, 60, np.Inf],
-       labels=["Young", "Teenager", "Adult", "Seniors", "Elderly"])
+       bins=[0,35, np.Inf],
+       labels=["Not Risky", "Risky"])
 
 df["avg_glucose_level"] = pd.to_numeric(df["avg_glucose_level"])
 
