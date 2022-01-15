@@ -35,8 +35,8 @@ df['SunRise'] = __sunrise
 df['SunSet'] = __sunset
 
 
-df["Hour2"] = pd.to_numeric(df["Hour"])
-df["Hour2"] = pd.cut(df["Hour2"],
+df["MomentOfDay"] = pd.to_numeric(df["Hour"])
+df["MomentOfDay"] = pd.cut(df["MomentOfDay"],
        bins=[0,5,11,14,20,24],
        labels=["Night","Morning","Midday","Afternoon","Night"],
                     ordered=False)
@@ -76,7 +76,7 @@ df["Radiation"] = pd.cut(df["Radiation"],
 
 df["Temperature"] = pd.to_numeric(df["Temperature"])
 df["Temperature"] = pd.cut(df["Temperature"],
-       bins=[-np.inf, 8.61, 11.94, np.inf],
+       bins=[-np.inf, 9, 12, np.inf],
        labels=["Cold","Normal","Heat"])
 
 
@@ -88,13 +88,13 @@ df["Pressure"] = pd.cut(df["Pressure"],
 
 df["Humidity"] = pd.to_numeric(df["Humidity"])
 df["Humidity"] = pd.cut(df["Humidity"],
-       bins=[0, 40, 70, 200],
+       bins=[-np.inf, 60, 90, np.inf],
        labels=["Low", "Normal", "High"])
 
 df["Speed"] = pd.to_numeric(df["Speed"])
 df["Speed"] = pd.cut(df["Speed"],
-       bins=[0, 20, 40, 100],
-       labels=["Low", "Normal", "High"])
+       bins=[-np.inf, 5, 8, np.inf],
+       labels=["Slow", "Normal", "Fast"])
 
 
 df['Rad'] = df['Radiation']
