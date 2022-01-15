@@ -27,7 +27,7 @@ for i in range(len(df["UNIXTime"])):
     __sunset.append(str(df["TimeSunSet"][i].split(":")[1]).rjust(2, '0'))
     df["Temperature"][i] = (float(df["Temperature"][i]) - 32) * 5.0 / 9.0
 
-    df["Pressure"][i] = str(df["Pressure"][i].split(".")[1]).ljust(2, '0')
+    # df["Pressure"][i] = str(df["Pressure"][i].split(".")[1]).ljust(2, '0')
 
 #df['Date'] = __Date
 df['Hour'] = __time
@@ -68,34 +68,21 @@ df["WindDirection(Degrees)"] = pd.cut(df["WindDirection(Degrees)"],
        labels=["N","E","S","W","N"],
        ordered=False)
 
-
-"""df["Radiation"] = pd.to_numeric(df["Radiation"])
-df["Radiation"] = pd.cut(df["Radiation"],
-       bins=[0, 100,300,500,700,900,  5000],
-       labels=["0-100","100-300", "300-500", "500-700", "700-900", "+900"])"""
-
 df["Radiation"] = pd.to_numeric(df["Radiation"])
 df["Radiation"] = pd.cut(df["Radiation"],
        bins=[0,300,700,  5000],
        labels=["Low","Med","High"])
 
 
-
-"""df["Temperature"] = pd.to_numeric(df["Temperature"])
-df["Temperature"] = pd.cut(df["Temperature"],
-       bins=[0, 2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20, 50],
-       labels=["0", "2.5", "5", "7.5", "10", "12.5", "15", "17.5", "20"])"""
-
-
 df["Temperature"] = pd.to_numeric(df["Temperature"])
 df["Temperature"] = pd.cut(df["Temperature"],
-       bins=[0, 15, 20, 50],
+       bins=[-np.inf, 8.61, 11.94, np.inf],
        labels=["Cold","Normal","Heat"])
 
 
 df["Pressure"] = pd.to_numeric(df["Pressure"])
 df["Pressure"] = pd.cut(df["Pressure"],
-       bins=[0, 30, 50, 60],
+       bins=[-np.inf, 30.415, 30.445, np.inf],
        labels=["Low", "Normal", "High"])
 
 
