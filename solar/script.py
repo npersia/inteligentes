@@ -70,7 +70,7 @@ df["WindDirection(Degrees)"] = pd.cut(df["WindDirection(Degrees)"],
 
 df["Radiation"] = pd.to_numeric(df["Radiation"])
 df["Radiation"] = pd.cut(df["Radiation"],
-       bins=[0,300,700,  5000],
+       bins=[-np.inf, 3, 300, np.inf],
        labels=["Low","Med","High"])
 
 
