@@ -45,18 +45,20 @@ df["MomentOfDay"] = pd.cut(df["MomentOfDay"],
 df["SunRise"] = pd.to_numeric(df["SunRise"])
 df["SunRise"] = pd.cut(df["SunRise"],
        bins=[0,20,40,60],
-       labels=["0-20","20-40","40-60"])
+       labels=["6:00-6:20","6:20-6:40","6:40-7:00"])
 
 df["SunSet"] = pd.to_numeric(df["SunSet"])
+
+for i in range(len(df["SunSet"])):
+       if df["SunSet"][i] >= 40:
+              df["SunSet"][i] -= 60
+
 df["SunSet"] = pd.cut(df["SunSet"],
-       bins=[0,20,40,60],
-       labels=["0-20","20-40","40-60"])
+       bins=[-20,0,20,40],
+       labels=["17:40-18:00","18:20-18:40","18:40-19:00"])
 
 
 df["UNIXTime"] = pd.to_numeric(df["UNIXTime"])
-df["fortnight"] = pd.cut(df["UNIXTime"],
-       bins=[1472698800000000000, 1473994800000000000, 1475290800000000000, 1476586800000000000, 1477969200000000000, 1479265200000000000, 1480561200000000000, 1481857200000000000, 1483239600000000000],
-       labels=["fortnight 1","fortnight 2", "fortnight 3", "fortnight 4", "fortnight 5", "fortnight 6", "fortnight 7", "fortnight 8"])
 
 df["month"] = pd.cut(df["UNIXTime"],
        bins=[1472698800000000000 , 1475290800000000000 , 1477969200000000000 , 1480561200000000000, 1483239600000000000],
