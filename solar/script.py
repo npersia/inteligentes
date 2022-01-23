@@ -37,7 +37,7 @@ df['SunSet'] = __sunset
 
 df["MomentOfDay"] = pd.to_numeric(df["Hour"])
 df["MomentOfDay"] = pd.cut(df["MomentOfDay"],
-       bins=[0,5,11,14,20,24],
+       bins=[-5,5,11,14,20,24],
        labels=["Night","Morning","Midday","Afternoon","Night"],
                     ordered=False)
 
