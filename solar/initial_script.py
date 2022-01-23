@@ -16,7 +16,7 @@ df["Radiation"] = pd.cut(df["Radiation"],
 df['Rad'] = df['Radiation']
 
 df["Temperature"] = pd.to_numeric(df["Temperature"])
-df["Temperature"] = (df["Temperature"] - 32) * 5.0 / 9.0
+# df["Temperature"] = (df["Temperature"] - 32) * 5.0 / 9.0
 
 df.to_csv('initial_data.csv', index=False)
 
