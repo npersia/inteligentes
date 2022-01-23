@@ -101,6 +101,7 @@ df["Speed"] = pd.cut(df["Speed"],
 
 df['Rad'] = df['Radiation']
 #df = df.drop(df[df.Rad == "0-100"].index)
+df.drop('Hour', axis=1, inplace=True)
 df.drop('UNIXTime', axis=1, inplace=True)
 df.drop('TimeSunRise', axis=1, inplace=True)
 df.drop('TimeSunSet', axis=1, inplace=True)
